@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ contact.nom }}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <img src="{{ contact.image }}" alt="Image article" style="height: 400px; width: auto; display: block">
+            </div>
+            <div class="col-md-6 mb-3">
+                <h2>{{ contact.nom }} | {{ contact.prenom }}</h2>
+                <hr>
+                <h4>{{ contact.numTele }}</h4>
+                <h4>{{ contact.email }}</h4>
+                <hr>
+                <p>{{ contact.adresse }}</p>
+                <p>{{ contact.codePostal }} | {{ contact.ville }}</p>
+                <br><br>
+                <a href="{{ path('contact') }}" type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

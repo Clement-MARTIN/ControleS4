@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des contacts{% endblock %}
+
+{% block body %}
+    <div id="modalSuppression" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Supprimer le contact</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Etes vous sur de vouloir supprimer ce contact ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                    <a href="" class="btn btn-warning" id="btnSuppr"> Supprimer </a></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1 class="my-3">Voici nos contacts !</h1>
+        <div class="row">
+            {% for contact in contacts %}
+                <div class="col-md-4">
+                    <div class="card bg-light mb-3">
+                        <div class="card-header text-centre">
+                            {{ contact.nom }} | {{ contact.prenom }} | {{ contact.numTele }}
+                        </div>
+
+                        <a>
+                            <img src="{{ contact.image }}" alt="Image" style="height: 200px; width: 100%; display: block">
+                        </a>
+
+                        <div class="card-body">
+                            <a href="{{ path('contact_name', {'id' : contact.id}) }}" class="btn btn-secondary">En savoir plus !</a>
+                            <a href='#modalSuppression' data-toggle='modal' data-message='Voulez vous supprimer cette article ?' data-suppression="{{path('contact_delete',{'id':contact.id})}}" class='btn btn-danger'>Suppimer</a>
+                            <a href="{{path('contact_edit',{'id':contact.id})}}" class="btn btn-warning">Modifier</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

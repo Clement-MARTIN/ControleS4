@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ var }} d'un contact{% endblock %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+    <div class="container">
+        <h1>{{ var }} un nouveau contact</h1>
+        {{ form_start(form) }}
+
+        {{ form_widget(form) }}
+        <button type="submit" class="btn btn-primary mt-3 mb-3">{{ var }}</button>
+        <a class="btn btn-success float-right" href="{{ path('contact') }}">Annuler</a>
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}
